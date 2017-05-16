@@ -1,11 +1,11 @@
 # Basic
-title: OneV's Den
-subtitle: 上善若水，人淡如菊
-welcome_message: ObjC 中国与 objc.io 合作最新作品<a href="https://objccn.io/products/" target="_blank">《函数式 Swift》,《Core Data》及《Swift 进阶》已经发布</a>，<a href="https://www.boxueio.com/register/ec84c3dd183b0acc820d5eae474d499d">泊学网正在开展订阅赠书活动，也欢迎前往了解</a>
-description: 嗨，我是王巍 (@onevcat)，一名来自中国的 iOS / Unity 开发者。现居日本，就职于 LINE。正在修行，探求创意之源。
-creator: <a href="http://onev.cat">@onevcat</a>
+title: 青鸾峰
+subtitle: 浮云千载、唯忆君颜
+welcome_message: 欢迎来到我的第一个也是最后一个博客
+description: 这是把<a href="http://onev.cat">喵神@onevcat</a>的博客搬过来的，因为不会web，正在匍匐前进
+creator: maomao
 
-url: "http://onevcat.com"
+url: "https://mikasaackerman.github.io/#blog"
 
 permalink: /:year/:month/:title/
 
@@ -20,9 +20,7 @@ blog_button:
     description: 访问博客
 
 nav:
-    - {title: 项目, description: 我的项目, url: 'http://project.onevcat.com'}
-    - {title: 关于, description: 了解更多关于我, url: 'http://about.onevcat.com/'}
-    - {title: 订阅, description: 邮件订阅本站, url: '//store.objccn.io/subscribe'}
+   
 
 # Pagination
 gems: [jekyll-paginate]
@@ -31,17 +29,14 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: onevcat
+    disqus: yuanbowang
     # duoshuo:
 # Social
 social:
-    weibo: onevcat
-    github: onevcat
-    twitter: onevcat
-    gplus: 107108267983477358170
-    mail: onev@onevcat.com
+    weibo: 1696225282
+    mail: maomaonoyh@yahoo.co.jp
 
 # Google Analytics
 ga:
-    id: UA-25719337-1
-    host: onevcat.com
+    id: 
+    host: 
