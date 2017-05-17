@@ -29,7 +29,7 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: maomao
+    disqus: maomao-1
     # duoshuo:
 # Social
 social:
