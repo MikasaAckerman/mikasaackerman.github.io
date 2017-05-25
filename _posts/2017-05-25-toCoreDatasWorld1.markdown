@@ -339,7 +339,7 @@ POP--面向过程编程(Process-oriented programming)
 
 最后，如果有错误或者指导请随意联系，评论邮件微博等等都行。  
 最最后，欢迎发邮件或者支持喵大的书以及喵大和他们小伙伴们翻译的书哟！[地址点我](https://www.objccn.io/)  
-最最最后，demo地址点我，再附上一张demo丑图。
+最最最后，demo[地址点我](https://github.com/MikasaAckerman/CorePracticeDemo)，再附上一张demo丑图。
 
 ![](/assets/images/2017/CoreDataBase4.png)
 
