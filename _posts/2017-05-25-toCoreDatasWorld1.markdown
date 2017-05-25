@@ -60,7 +60,7 @@ extension Mood: Managed {
 
 #### 关联CoreData与Mood类
 
-如文章第一张图，右侧`Class` `Name`写上Mood。
+如文章第一张图，右侧`Class` `Name`写上Mood。但是这个name好像是自动添加的，个人感觉最重要的是`Codegen`要改成人工/无，不然系统也会自动创建Mood类导致一直报错。
 
 #### 设置CoreData栈
 
