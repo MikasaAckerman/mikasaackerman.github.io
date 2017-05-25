@@ -5,7 +5,7 @@ date: 2017-05-25 13:01:00.000000000 +09:00
 tags: 回梦游仙
 ---
 
-在忙完一个阶段之后，就可以准备忙下一个阶段了。——毒鸡汤段子手
+在忙完一个阶段之后，就可以准备忙下一个阶段了。——毒鸡汤段子手  
 然而我最近不太忙，所以准备研究下接下来能用到的知识点。  
 感觉下阶段要追加购物车的功能，自己想了很久，UserDefaults，看不到又占内存；FMDB，又要增大app体积。所以最终还是准备用CoreData来存储数据。其实是瞎扯，是自己想学习这个^_^
 
@@ -17,24 +17,24 @@ tags: 回梦游仙
 
 ## 话不多说，开始搞起。
 
-### 建立工程
+#### 建立工程
 
 为何要说这个呢，通过看书，得知一些算是技巧的点吧。  
 建立工程不要勾上CoreData，建立完毕可以自己手动添加，这样AppDelegate不会出现那些自带代码，可以把CoreData捏在手里随心所欲。
 
-### 创建Data Model
+#### 创建Data Model
 
 `Command + N` 选择CoreData里的DataModel文件，起名为Moody，确认后生成Moody.xcdatamodeld文件
 
-![](/assets/images/2017/CoreDataBase1)
+![](/assets/images/2017/CoreDataBase1.png)
 
 然后`Add Entity`添加Mood实体，再添加可转换类型的colors属性（书上写的遵循 NSCoding 协议的数据类型都可以直接声明为可转换的属性）（偷懒把数组改成了单个颜色，但是属性名字没改，见谅）和日期类型date的属性，选择属性date右边再勾上Indexed去掉Optional（变成索引和变成必选吧，暂时我乱勾对既有的已完成的demo工程也没影响，后面可能才会见到，先按照书上的来了）
 
-![](/assets/images/2017/CoreDataBase2)
+![](/assets/images/2017/CoreDataBase2.png)
 
-![](/assets/images/2017/CoreDataBase3)
+![](/assets/images/2017/CoreDataBase3.png)
 
-### 创建Mood实体的托管对象子类
+#### 创建Mood实体的托管对象子类
 
 ```swift
 import UIKit
@@ -58,11 +58,11 @@ extension Mood: Managed {
 > - 自己也不是很明白，去搜了下，大约是类似于OC里@dynamic标签（其实这个我也不知道是啥- -），不过重点来了，就是告诉runtime，它自己会创建，并存在吧，更细节还得慢慢掌握。
 
 
-### 关联CoreData与Mood类
+#### 关联CoreData与Mood类
 
 如文章第一张图，右侧`Class` `Name`写上Mood
 
-### 设置CoreData栈
+#### 设置CoreData栈
 
 iOS10之后可以用`NSPersistentContainer`来设置一个一本的Core Data栈，自己不是很理解这个栈，但是学完之后感觉是可以用这个栈来获取上下文吧。因此书上会创建容器，从中我们可以获取将在整个app里都被使用的托管对象上下文。  
 但是之前版本的iOS方法不同，没这个类，只能直接获取上下文。  
@@ -108,7 +108,7 @@ public func createMoodyMainContext() -> NSManagedObjectContext {
 }
 ```
 
-### 获取请求
+#### 获取请求
 
 基础的应该是创建请求，给个排序和获取数量，就能查询到所有的数据了
 
@@ -157,7 +157,7 @@ extension Managed where Self: NSManagedObject {
 }
 ```
 
-### 与Fetched Results Controller配合在ViewController里表现
+#### 与Fetched Results Controller配合在ViewController里表现
 
 关键点在于`NSFetchedResultsController`的`.sections[i].objects?[i]`，和tableView的indexPath，类似，这样就可以获取一个Mood。  
 删除修改都可以随意操作，最后记得`save()`，不然只是在内存中表现了，并没有让上下文通知数据库改变数据哟。
@@ -302,7 +302,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 ```
 
@@ -310,21 +309,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 看了大神的代码，感觉有不少收获呢~
 
-### guard
+#### guard
 
 每次遇到！解包的时候总会心惊胆战怕崩溃，现在可以在各处多写几行`guard let else {fatal error}`  
 自己唯一用到的地方是获取当前tab.nav的第几个ViewController，感觉挺好用的，以后要多多使用
 
-### 标签
+#### 标签
 
 代码里多出使用`static`、`private`、`fileprivate`、`fileprivate(set)`各种标签，而自己基本没用过，感觉差距有点大，自己感觉是态度，严谨差距。
 
-### extension
+#### extension
 
 各种延展，就一个tableViewCell的配置，在主class里就写了俩属性，其他方法就在延展里了，虽然不知道为啥，感觉醉醉的，但是还是决定模仿一下，毕竟大神！  
 这里没有这个cell的代码，需要的下载demo吧，里面有惊喜哟，对于喜欢dateFormatter的伙伴又是个学习机会，那里我没写注释~
 
-### 个人猜测
+#### 个人猜测
 
 是不是作者是面向协议编程的大神呢，感觉各种协议，自己知道用协议的地方只有代理，以后可以学习作者协议使用的地方，这样以后面试也不会只能说出代理了，嘿嘿。
 
@@ -342,7 +341,7 @@ POP--面向过程编程(Process-oriented programming)
 最最后，欢迎发邮件或者支持喵大的书以及喵大和他们小伙伴们翻译的书哟！[地址点我](https://www.objccn.io/)  
 最最最后，demo地址点我，再附上一张demo丑图。
 
-![](/assets/images/2017/CoreDataBase4)
+![](/assets/images/2017/CoreDataBase4.png)
 
 
 
