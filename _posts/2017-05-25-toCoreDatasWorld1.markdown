@@ -9,13 +9,13 @@ tags: 回梦游仙
 然而我最近不太忙，所以准备研究下接下来能用到的知识点。  
 感觉下阶段要追加购物车的功能，自己想了很久，UserDefaults，看不到又占内存；FMDB，又要增大app体积。所以最终还是准备用CoreData来存储数据。其实是瞎扯，是自己想学习这个^_^
 
-虽然说之前也用过CoreData，但是当时模仿公司前辈用的KVC取值赋值编码解码，而且自己封装方法把这些值取出来自己初始化模型，我个人感觉CoreData一个实体就是一个模型，可以直接用并不用初始化了
+虽然说之前也用过CoreData，但是当时模仿公司前辈用的KVC取值赋值编码解码，而且自己封装方法把这些值取出来自己初始化模型，我个人感觉CoreData一个实体就是一个模型，可以直接用并不用初始化了。
 
 打开从喵神和其他大神组织的[Objc中国](https://www.objccn.io/)那里买的[CoreData](https://www.objccn.io/products/core-data/)一书，开始入门！p.s.还有明杰老师多年前写的[Core Data入门](http://blog.csdn.net/q199109106q/article/details/8563438/)，可以总览一下~
 
 然后，自己就撸了一个增删改查的demo，查询并在tableView上表现，增加一条和删除第一条数据，改变cell一个view颜色，这个超简单工程的demo也可以下载对着注释看一遍，可能你就可以简单使用咯~
 
-## 话不多说，开始搞起。
+## 话不多说，开始搞起
 
 #### 建立工程
 
@@ -24,11 +24,11 @@ tags: 回梦游仙
 
 #### 创建Data Model
 
-`Command + N` 选择CoreData里的DataModel文件，起名为Moody，确认后生成Moody.xcdatamodeld文件
+`Command + N` 选择CoreData里的DataModel文件，起名为Moody，确认后生成Moody.xcdatamodeld文件。
 
 ![](/assets/images/2017/CoreDataBase1.png)
 
-然后`Add Entity`添加Mood实体，再添加可转换类型的colors属性（书上写的遵循 NSCoding 协议的数据类型都可以直接声明为可转换的属性）（偷懒把数组改成了单个颜色，但是属性名字没改，见谅）和日期类型date的属性，选择属性date右边再勾上Indexed去掉Optional（变成索引和变成必选吧，暂时我乱勾对既有的已完成的demo工程也没影响，后面可能才会见到，先按照书上的来了）
+然后`Add Entity`添加Mood实体，再添加可转换类型的colors属性（书上写的遵循 NSCoding 协议的数据类型都可以直接声明为可转换的属性）（偷懒把数组改成了单个颜色，但是属性名字没改，见谅）和日期类型date的属性，选择属性date右边再勾上Indexed去掉Optional（变成索引和变成必选吧，暂时我乱勾对既有的已完成的demo工程也没影响，后面可能才会见到，先按照书上的来了）。
 
 ![](/assets/images/2017/CoreDataBase2.png)
 
@@ -54,19 +54,19 @@ extension Mood: Managed {
 }
 ```
 
-> - @NSManaged 书上说是告诉编译器这些属性将由Core Data来实现
+> - @NSManaged 书上说是告诉编译器这些属性将由Core Data来实现。
 > - 自己也不是很明白，去搜了下，大约是类似于OC里@dynamic标签（其实这个我也不知道是啥- -），不过重点来了，就是告诉runtime，它自己会创建，并存在吧，更细节还得慢慢掌握。
 
 
 #### 关联CoreData与Mood类
 
-如文章第一张图，右侧`Class` `Name`写上Mood
+如文章第一张图，右侧`Class` `Name`写上Mood。
 
 #### 设置CoreData栈
 
 iOS10之后可以用`NSPersistentContainer`来设置一个一本的Core Data栈，自己不是很理解这个栈，但是学完之后感觉是可以用这个栈来获取上下文吧。因此书上会创建容器，从中我们可以获取将在整个app里都被使用的托管对象上下文。  
 但是之前版本的iOS方法不同，没这个类，只能直接获取上下文。  
-下面是代码
+下面是代码——
 
 ```swift
 import CoreData
@@ -110,7 +110,7 @@ public func createMoodyMainContext() -> NSManagedObjectContext {
 
 #### 获取请求
 
-基础的应该是创建请求，给个排序和获取数量，就能查询到所有的数据了
+基础的应该是创建请求，给个排序和获取数量，就能查询到所有的数据了。
 
 ``` swift
 let request = NSFetchRequest<Mood>(entityName: "Mood")
@@ -119,7 +119,7 @@ request.sortDescriptors = [sortDescriptor]
 request.fetchBatchSize = 20
 ```
 
-但是作者毕竟是大神，自己封装一个协议类，让Mood模型来实现这个协议，通用类简化代码量
+但是作者毕竟是大神，自己封装一个协议类，让Mood模型来实现这个协议，通用类简化代码量。
 
 ```swift
 import CoreData
@@ -311,8 +311,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 #### guard
 
-每次遇到！解包的时候总会心惊胆战怕崩溃，现在可以在各处多写几行`guard let else {fatal error}`  
-自己唯一用到的地方是获取当前tab.nav的第几个ViewController，感觉挺好用的，以后要多多使用
+每次遇到！解包的时候总会心惊胆战怕崩溃，现在可以在各处多写几行`guard let else {fatal error}`。  
+自己唯一用到的地方是获取当前tab.nav的第几个ViewController，感觉挺好用的，以后要多多使用。
 
 #### 标签
 
