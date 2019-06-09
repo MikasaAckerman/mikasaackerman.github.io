@@ -5,9 +5,7 @@ date: 2018-12-06 22:16:00.000000000 +09:00
 tags: 回梦游仙
 ---
 
-来日本两年多了，一直是一个人开发，新的工作环境也一样，完全没人切磋，感觉进步龟速。。
-
-但是路还是要往前走的，所以现在总结下之前记录的知识点。
+总结下之前记录的知识点。
 
 ### 代码写的 view 如何放入 xib
 ```swift
@@ -94,7 +92,3 @@ https://developer.apple.com/documentation/swift/choosing_between_structures_and_
 Choosing Between Structures and Classes
 
 
-# 回顾
-虽然知识点很少，但是感觉都是网上很少列举的（自己搜肯定能搜到），不是那么水吧。
-
-换了个新现场，俩月过去了，新人时间早已结束，虽然有点适应了节奏，但是日语还是个坎，继续加油吧！
