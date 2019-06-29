@@ -61,3 +61,17 @@ end
 ```
 
 果然给 cocoapods 打开 bitcode 的思路是对的。
+
+## 拓展
+
+cocoapods 禁用 bitcode
+
+```
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+    end
+  end
+end
+```
